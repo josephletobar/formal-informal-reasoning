@@ -55,13 +55,24 @@ def prompt_for(a: int, b: int, form: str) -> str:
     raise ValueError(form)
 
 
+def final_position_logits(logits):
+    """Normalize model logits to the vocabulary vector at the final sequence position."""
+    if logits.ndim == 3:
+        return logits[0, -1]
+    if logits.ndim == 2:
+        return logits[-1]
+    if logits.ndim == 1:
+        return logits
+    raise ValueError(f"Unexpected logits shape: {tuple(logits.shape)}")
+
+
 def extract(model, prompt: str):
     import torch
 
     with torch.inference_mode():
         logits, acts = model.get_activations(prompt, sparse=False)
         final_acts = acts[:, -1, :].float().cpu().numpy()
-        final_logits = logits[-1].float().cpu().numpy()
+        final_logits = final_position_logits(logits).float().cpu().numpy()
     top_idx = np.empty((final_acts.shape[0], TOP_K), dtype=np.int32)
     top_val = np.empty((final_acts.shape[0], TOP_K), dtype=np.float32)
     for layer, row in enumerate(final_acts):
@@ -264,7 +275,7 @@ def main() -> None:
     rng = random.Random(7)
     for a, b in PAIRS[:4]:
         prompt = prompt_for(a, b, "A_explicit")
-        idx, values, logits = direct[(a, b)]
+        idx, values, logits, _ = direct[(a, b)]
         base_score, _, _ = margin(model, logits, a + b)
         tokens = model.ensure_tokenized(prompt)
         position = int(tokens.shape[-1] - 1)
@@ -279,7 +290,7 @@ def main() -> None:
                         sparse=True,
                         return_activations=False,
                     )
-                    new_score, _, _ = margin(model, new_logits[-1].float().cpu().numpy(), a + b)
+                    new_score, _, _ = margin(model, final_position_logits(new_logits).float().cpu().numpy(), a + b)
                     causal_rows.append({
                         "a": a, "b": b, "prompt": prompt,
                         "layer": layer, "candidate_feature": feature,
