@@ -132,7 +132,7 @@ def load_model():
 
 def run_graph(model, results: Path, prompt: str, gold: int) -> dict:
     import torch
-    from circuit_tracer.attribution import attribute
+    from circuit_tracer.attribution.attribute import attribute
 
     try:
         target = torch.tensor([token_id(model, str(gold))], device=model.cfg.device)
