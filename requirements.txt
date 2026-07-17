@@ -1,0 +1,5 @@
+numpy>=1.26
+safetensors>=0.4
+transformers>=4.45
+huggingface_hub>=0.25
+transformer-lens>=2.15
