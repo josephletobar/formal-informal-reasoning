@@ -76,7 +76,7 @@ def extract(model, prompt: str):
     del logits, acts
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
-    return top_idx, top_val, final_logits
+    return top_idx, top_val, final_logits, final_acts
 
 
 def feature_set(top_idx: np.ndarray, top_val: np.ndarray) -> set[tuple[int, int]]:
@@ -173,17 +173,17 @@ def main() -> None:
 
     model = load_model()
     set_state(results, "model_loaded")
-    direct: dict[tuple[int, int], tuple[np.ndarray, np.ndarray, np.ndarray]] = {}
+    direct: dict[tuple[int, int], tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]] = {}
     behavior_rows: list[dict] = []
     counts: Counter[tuple[int, int]] = Counter()
     sums: defaultdict[tuple[int, int], float] = defaultdict(float)
 
     for i, (a, b) in enumerate(PAIRS):
         prompt = prompt_for(a, b, "A_explicit")
-        idx, values, logits = extract(model, prompt)
+        idx, values, logits, dense = extract(model, prompt)
         keys = feature_set(idx, values)
         score, gold_id, foil_id = margin(model, logits, a + b)
-        direct[(a, b)] = (idx, values, logits)
+        direct[(a, b)] = (idx, values, logits, dense)
         for layer, feature in keys:
             counts[(layer, feature)] += 1
             hit = np.flatnonzero(idx[layer] == feature)
@@ -212,24 +212,53 @@ def main() -> None:
     write_csv(results / "behavior.csv", behavior_rows)
 
     representation_rows: list[dict] = []
+    dense_by_form: dict[str, list[np.ndarray]] = {form: [] for form in FORMS}
     for i, (a, b) in enumerate(PAIRS):
         akeys = feature_set(direct[(a, b)][0], direct[(a, b)][1])
+        dense_by_form["A_explicit"].append(direct[(a, b)][3])
         for form in ("B_applied", "C_implicit"):
             prompt = prompt_for(a, b, form)
-            idx, values, logits = extract(model, prompt)
+            idx, values, logits, dense = extract(model, prompt)
             keys = feature_set(idx, values)
+            dense_by_form[form].append(dense)
             score, gold_id, foil_id = margin(model, logits, a + b)
+            a_dense = direct[(a, b)][3]
+            a_flat = a_dense.reshape(-1).astype(np.float32)
+            b_flat = dense.reshape(-1).astype(np.float32)
+            dense_cosine = float(np.dot(a_flat, b_flat) / (np.linalg.norm(a_flat) * np.linalg.norm(b_flat) + 1e-8))
             union = len(akeys | keys)
             representation_rows.append({
                 "a": a, "b": b, "form": form, "prompt": prompt,
                 "correct_vs_foil": int(score >= 0),
                 "gold_minus_foil": score,
                 "same_pair_jaccard": len(akeys & keys) / union if union else 0.0,
+                "dense_activation_cosine": dense_cosine,
                 "same_pair_overlap": len(akeys & keys),
                 "gold_token_id": gold_id, "foil_token_id": foil_id,
             })
         set_state(results, "abc_representation", completed=i + 1, total=len(PAIRS))
     write_csv(results / "representation.csv", representation_rows)
+
+    # Compare the low-dimensional subspaces spanned by dense feature
+    # activations across the eight matched prompts. This is a representation
+    # test, not a causal result.
+    def subspace_affinity(left: list[np.ndarray], right: list[np.ndarray]) -> float:
+        left_matrix = np.stack([item.reshape(-1).astype(np.float32) for item in left])
+        right_matrix = np.stack([item.reshape(-1).astype(np.float32) for item in right])
+        left_matrix -= left_matrix.mean(axis=0, keepdims=True)
+        right_matrix -= right_matrix.mean(axis=0, keepdims=True)
+        rank = max(1, min(4, left_matrix.shape[0] - 1, right_matrix.shape[0] - 1))
+        left_basis = np.linalg.svd(left_matrix, full_matrices=False)[2][:rank].T
+        right_basis = np.linalg.svd(right_matrix, full_matrices=False)[2][:rank].T
+        singular_values = np.linalg.svd(left_basis.T @ right_basis, compute_uv=False)
+        return float(np.mean(singular_values))
+
+    subspace_rows = [
+        {"comparison": "A_vs_B", "subspace_affinity": subspace_affinity(dense_by_form["A_explicit"], dense_by_form["B_applied"])},
+        {"comparison": "A_vs_C", "subspace_affinity": subspace_affinity(dense_by_form["A_explicit"], dense_by_form["C_implicit"])},
+    ]
+    write_csv(results / "subspace_similarity.csv", subspace_rows)
+    write_csv(results / "activation_similarity.csv", representation_rows)
 
     causal_rows: list[dict] = []
     rng = random.Random(7)
@@ -292,7 +321,9 @@ This is a reproduction of the analysis pattern, not Claude or Anthropic's exact 
 
 - Direct behavioral accuracy versus a nearby foil: {mean(behavior_rows, "correct_vs_foil")}
 - ABC behavioral accuracy: {mean(behavior_rows + representation_rows, "correct_vs_foil")}
-- Same-pair A-to-B/C feature Jaccard: {mean(representation_rows, "same_pair_jaccard")}
+- Same-pair A-to-B/C sparse-feature Jaccard: {mean(representation_rows, "same_pair_jaccard")}
+- Same-pair dense-feature activation cosine: {mean(representation_rows, "dense_activation_cosine")}
+- A-vs-B/C subspace affinity: {subspace_rows}
 - Candidate suppression mean effect: {mean(candidate_effects, "effect")}
 - Random suppression mean effect: {mean(random_effects, "effect")}
 - Causal rows: {len(causal_rows)}
@@ -308,6 +339,8 @@ Evidence for a reusable computation requires behavioral reliability, above-contr
 - `feature_candidates.csv`
 - `frozen_candidates.json`
 - `representation.csv`
+- `activation_similarity.csv`
+- `subspace_similarity.csv`
 - `causal.csv`
 - `graph_summary.json`
 - `addition_graph_single.pt` when graph construction succeeds
