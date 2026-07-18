@@ -27,5 +27,6 @@ The defensible scientific claim is therefore:
 - `NMI_ARTICLE_SUBMISSION.docx`: Word initial-submission version of the article.
 - `audit_submission_docx.py`: structural audit for the Word manuscript.
 - `SUBMISSION_STATUS.md`: explicit local readiness and remaining external gates.
+- `SUBMISSION_PAYLOAD.md`: exact manuscript, figure and supplementary-file upload list.
 
 The manuscript is a serious working draft, not evidence that a journal has accepted or will accept the paper. The remaining release blockers are explicitly listed so the project can move toward a credible submission rather than overclaiming from the current data.
