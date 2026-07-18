@@ -3,8 +3,8 @@
 The audited research package is publicly available in the repository's canonical location:
 
 - Repository: https://github.com/josephletobar/formal-informal-reasoning
-- Release tag: `v0.1.8-abc-publication`
-- Commit: `c8a094e0e98effdb26efa61fed1e5d575580a9f2`
+- Release tag: `v0.1.9-abc-publication`
+- The tag is the authoritative immutable release reference.
 
 The current main branch includes later metadata and workflow commits. The release tag points to the corrected dependency-pinned behavioral-screen workflow.
 

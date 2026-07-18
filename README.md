@@ -44,4 +44,4 @@ The manuscript reports both positive graph/path effects and the null held-out re
 
 The publication-package audits also run automatically through GitHub Actions on changes to the package.
 
-The current citable release is [`v0.1.8-abc-publication`](https://github.com/josephletobar/formal-informal-reasoning/tree/v0.1.8-abc-publication).
+The current citable release is [`v0.1.9-abc-publication`](https://github.com/josephletobar/formal-informal-reasoning/tree/v0.1.9-abc-publication).
