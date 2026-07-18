@@ -1,0 +1,34 @@
+name: Publication package checks
+
+on:
+  push:
+    paths:
+      - "publication_package/**"
+      - "publication_requirements.txt"
+      - ".github/workflows/publication-package.yml"
+  pull_request:
+    paths:
+      - "publication_package/**"
+      - "publication_requirements.txt"
+      - ".github/workflows/publication-package.yml"
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install publication-check dependencies
+        run: python -m pip install -r publication_requirements.txt
+      - name: Recompute headline claims
+        run: python publication_package/audit_claims.py
+      - name: Run package smoke test
+        run: python publication_package/clean_room_smoke.py
+      - name: Verify manuscript package
+        run: python publication_package/verify_publication_package.py
+      - name: Audit Word manuscript structure
+        run: python publication_package/audit_submission_docx.py
+      - name: Rebuild figures
+        run: python publication_package/make_publication_figures.py

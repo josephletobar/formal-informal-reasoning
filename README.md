@@ -39,3 +39,5 @@ python publication_package/verify_publication_package.py
 ```
 
 The manuscript reports both positive graph/path effects and the null held-out recurrent-feature necessity result. It does not claim that a discrete reasoning module has been established. Model weights, gated credentials and large serialized graph objects are intentionally not committed.
+
+The publication-package audits also run automatically through GitHub Actions on changes to the package.
