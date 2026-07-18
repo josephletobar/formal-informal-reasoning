@@ -80,5 +80,5 @@ python publication_package\verify_publication_package.py
 2. Add SHA256 hashes for the exact model and transcoder snapshots; the current hash manifest covers the local tabular and graph-analysis inputs.
 3. Publish the full serialized graph objects and exact model/transcoder snapshot hashes if a byte-for-byte graph rerun is required.
 4. Run the smoke test in a genuinely fresh environment and add a one-command end-to-end rerun for one inference/intervention.
-5. Publish the benchmark generator and prompt manifests through a public repository with a license.
+5. Add an explicit code/data license to the public repository.
 6. Run a larger preregistered held-out replication before making a strong modularity claim.

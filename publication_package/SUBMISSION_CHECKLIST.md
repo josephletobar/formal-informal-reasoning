@@ -31,9 +31,10 @@
 - [x] Reproducibility manifest identifies primary artifacts and commands.
 - [x] Record the observed dependency environment in `environment-lock.txt`; convert to a tested install lock before release.
 - [x] Add hashes for benchmark, report-input and graph-analysis artifacts; model/transcoder snapshot hashes remain open.
-- [ ] Remove machine-specific absolute paths from public manifests.
+- [x] Remove machine-specific absolute paths from public manifests.
 - [x] Include deterministic benchmark generator and prompt manifest in the package.
-- [ ] Add a license and public repository release.
+- [x] Public repository release pushed at the tagged commit.
+- [ ] Add an explicit code/data license.
 
 ## Editorial positioning
 
