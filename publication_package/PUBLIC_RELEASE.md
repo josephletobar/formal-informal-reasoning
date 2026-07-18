@@ -6,7 +6,7 @@ The audited research package is publicly available in the repository's canonical
 - Release tag: `v0.1.0-abc-publication`
 - Commit: `def6f111226666881f954743f01c4e63f040bbb2`
 
-The current main branch includes later metadata and workflow commits; the corrected stable tag is `v0.1.6-abc-publication`.
+The current main branch includes later metadata and workflow commits; the corrected stable tag for this CI extension will be `v0.1.7-abc-publication`.
 
 The release contains the article draft, Word submission file, figures, benchmark, repository-relative derived data, source drivers and verification scripts. It does not contain model weights, gated credentials or the large serialized graph archive retained locally.
 

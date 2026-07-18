@@ -29,5 +29,6 @@ The defensible scientific claim is therefore:
 - `SUBMISSION_STATUS.md`: explicit local readiness and remaining external gates.
 - `SUBMISSION_PAYLOAD.md`: exact manuscript, figure and supplementary-file upload list.
 - `PRESUBMISSION_ENQUIRY_DRAFT.md`: optional editorial-scope enquiry draft.
+- `run_independent_behavioral_screen.py`: bounded public-model behavioral screen run by CI; it is explicitly not a mechanistic replication.
 
 The manuscript is a serious working draft, not evidence that a journal has accepted or will accept the paper. The remaining release blockers are explicitly listed so the project can move toward a credible submission rather than overclaiming from the current data.

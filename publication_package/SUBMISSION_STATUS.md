@@ -12,6 +12,7 @@
 - Raw tables, benchmark generator and experiment-driver copies. Serialized graph objects remain in the local archive but are not included in this lightweight public release.
 - SHA256 manifest covering 27 package, data and driver inputs.
 - Claim audit, clean-room package smoke test and package verifier all pass.
+- A bounded public-model behavioral screen is now configured in CI; its artifact is kept separate from the mechanistic claims.
 - Submission archive: `publication_package_submission_checkpoint.zip`.
 
 ## Not yet complete

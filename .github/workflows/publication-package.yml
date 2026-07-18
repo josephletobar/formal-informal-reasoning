@@ -32,3 +32,21 @@ jobs:
         run: python publication_package/audit_submission_docx.py
       - name: Rebuild figures
         run: python publication_package/make_publication_figures.py
+
+  independent-behavioral-screen:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install behavioral-screen dependencies
+        run: python -m pip install -r publication_requirements.txt transformers huggingface_hub
+      - name: Run public-model behavioral screen
+        run: python publication_package/run_independent_behavioral_screen.py --out behavioral_screen
+      - name: Upload behavioral-screen results
+        uses: actions/upload-artifact@v4
+        with:
+          name: independent-behavioral-screen
+          path: behavioral_screen/
