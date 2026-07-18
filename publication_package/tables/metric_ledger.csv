@@ -1,0 +1,18 @@
+metric,evidence_class,model,experiment,n,mean,ci_low,ci_high,unit,interpretation
+graph_parent_overlap_same_form,representation,Gemma-2-2B,research_v16_abc_graph_panel,84,0.610440,0.586400,0.634500,jaccard,recurrence within matched prompt forms
+graph_parent_overlap_different_form,representation,Gemma-2-2B,research_v16_abc_graph_panel,192,0.106689,0.104800,0.108600,jaccard,lower cross-form overlap
+multilayer_path_zero,causal,Gemma-2-2B,research_v18_full_path_component,64,0.660278,0.325436,0.995120,gold_minus_foil_damage,in-sample path influence
+attention_source_position_removal,causal,Gemma-2-2B,research_v18_full_path_component,128,0.206482,0.159279,0.253685,gold_minus_foil_damage,source routing influence
+recurrent_feature_zero_heldout,heldout_causal,Gemma-2-2B,research_v17_recurrent_graph_causal_active_control_v2,141,-0.012219,-0.026587,0.002149,gold_minus_foil_damage,no held-out necessity support
+active_control_zero_heldout,heldout_causal,Gemma-2-2B,research_v17_recurrent_graph_causal_active_control_v2,141,0.009215,-0.011705,0.030136,gold_minus_foil_damage,matched active null control
+recurrent_minus_control_zero,heldout_causal,Gemma-2-2B,research_v17_recurrent_graph_causal_active_control_v2,141,-0.021434,-0.048502,0.005633,paired_damage_difference,no recurrent-feature advantage
+same_answer_chain_zero,transfer,Gemma-2-2B,research_v19_same_answer_transfer,4,-0.541016,-0.726709,-0.355322,gold_minus_foil_damage,zeroing often improved margin
+same_answer_chain_transfer_gain,transfer,Gemma-2-2B,research_v19_same_answer_transfer,4,-0.535156,-0.718214,-0.352099,gold_minus_foil_gain,no independent sufficiency
+cross_form_applied_transfer,transfer,Gemma-2-2B,research_v20_cross_form_transfer_v3,24,-0.007589,-0.014262,-0.000917,gold_minus_foil_damage,no positive addition transfer
+cross_form_implicit_transfer,transfer,Gemma-2-2B,research_v20_cross_form_transfer_v3,24,-0.005290,-0.009616,-0.000964,gold_minus_foil_damage,no positive addition transfer
+cross_form_subtraction_transfer,control_transfer,Gemma-2-2B,research_v20_cross_form_transfer_v3,24,0.002604,0.000410,0.004798,gold_minus_foil_damage,small control effect
+cross_form_multiplication_transfer,control_transfer,Gemma-2-2B,research_v20_cross_form_transfer_v3,24,-0.002930,-0.007332,0.001473,gold_minus_foil_damage,near zero control effect
+addition_residual_transfer,causal,Gemma-2-9B,research_v14_gemma9_mechanistic,30,1.991000,1.519500,2.462800,gold_minus_foil_effect,cleanest larger-model addition contrast
+addition_wrong_residual_transfer,control,Gemma-2-9B,research_v14_gemma9_mechanistic,30,-0.767000,-1.628000,0.094000,gold_minus_foil_effect,wrong-computation control crosses zero
+addition_residual_transfer,causal,Qwen3-8B,research_v13_qwen3_mechanistic,30,1.528100,0.952000,2.104200,gold_minus_foil_effect,positive larger-model compatibility
+addition_wrong_residual_transfer,control,Qwen3-8B,research_v13_qwen3_mechanistic,30,0.022900,-1.108000,1.154000,gold_minus_foil_effect,wrong-computation control crosses zero

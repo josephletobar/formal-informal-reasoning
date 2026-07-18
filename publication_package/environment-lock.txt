@@ -1,0 +1,13 @@
+# Runtime versions observed on the RunPod experiment worker
+python==3.12.3
+torch==2.8.0+cu128
+transformers==4.57.3
+pandas==3.0.3
+numpy==2.1.2
+circuit-tracer==0.4.1
+
+# Also required by the scripts; exact versions should be frozen before public release.
+transformer-lens
+accelerate
+safetensors
+matplotlib

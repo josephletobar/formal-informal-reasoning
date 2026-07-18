@@ -1,0 +1,50 @@
+{
+  "families": [
+    "addition",
+    "subtraction",
+    "multiplication"
+  ],
+  "forms": [
+    "explicit",
+    "applied",
+    "implicit"
+  ],
+  "pairs": [
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      3
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      1,
+      7
+    ]
+  ],
+  "rows": 360,
+  "discovery_direct_rows": 36,
+  "confirmation_direct_rows": 36,
+  "tokenization_policy": "exclude any item whose gold answer is not one token before causal analysis"
+}

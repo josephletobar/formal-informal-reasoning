@@ -27,3 +27,15 @@ bash setup_runpod.sh
 ```
 
 Do not commit or write the Hugging Face token into the repository. Results are written to `results/`.
+
+## Audited publication package
+
+The `publication_package/` directory contains the current Nature Machine Intelligence article draft, Word initial-submission file, figures, benchmark, repository-relative derived data, experiment-driver copies, metric ledger and reproducibility checks. Run the lightweight public-release checks from the repository root:
+
+```bash
+python publication_package/audit_claims.py
+python publication_package/clean_room_smoke.py
+python publication_package/verify_publication_package.py
+```
+
+The manuscript reports both positive graph/path effects and the null held-out recurrent-feature necessity result. It does not claim that a discrete reasoning module has been established. Model weights, gated credentials and large serialized graph objects are intentionally not committed.

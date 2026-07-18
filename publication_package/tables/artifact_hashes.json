@@ -1,0 +1,140 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": "publication_package/NMI_ARTICLE_DRAFT.md",
+      "bytes": 16793,
+      "sha256": "253e497415335f7e115141fbd60bcd9c29c11f0e0914971dca02fdd9424c0386"
+    },
+    {
+      "path": "publication_package/PREREGISTERED_REPLICATION_PROTOCOL.md",
+      "bytes": 7201,
+      "sha256": "70264442c759f7c1de312a0f0eddfd12314dc321f2a40da4b5d1a28c713b212b"
+    },
+    {
+      "path": "publication_package/benchmark_v1/benchmark_v1.csv",
+      "bytes": 45647,
+      "sha256": "4e9bac6e5a57ebe5889f5edf3512af42ad33e434854f1c8420dcd6e24140978a"
+    },
+    {
+      "path": "publication_package/benchmark_v1/benchmark_v1.jsonl",
+      "bytes": 78364,
+      "sha256": "cf1acb543199e6f5df8ba91cf2effeb64d4b4a3b63b195a81115cd76fdf53a9d"
+    },
+    {
+      "path": "publication_package/benchmark_v1/benchmark_manifest.json",
+      "bytes": 632,
+      "sha256": "43aeb434af05e6d330485d301b118733547731310a131b39c56d09d5fa70d570"
+    },
+    {
+      "path": "publication_package/tables/metric_ledger.csv",
+      "bytes": 3002,
+      "sha256": "5252790048088ff6bd54bd2d271af1c0152232976f307765e4c22ef1bcd90de0"
+    },
+    {
+      "path": "publication_package/data/graph_target_parents.csv",
+      "bytes": 308883,
+      "sha256": "813038eccfc17468cbeb24dd8868bf1ea615e8c6dfb0815483ef43ae707f643e"
+    },
+    {
+      "path": "publication_package/data/recurring_graph_features.csv",
+      "bytes": 22740,
+      "sha256": "bcaaf6c185636a48c5049d52ac73c7f1c03cbc45d825a083ee23b984e3abc0ca"
+    },
+    {
+      "path": "publication_package/data/recurrent_graph_causal.csv",
+      "bytes": 104268,
+      "sha256": "2a9d96ab38ad3ce96df34c7519bcef1231a16e574b074fced4ba14e14500e2c3"
+    },
+    {
+      "path": "publication_package/data/multilayer_path_tests.csv",
+      "bytes": 16462,
+      "sha256": "27fdcc0c48ef4d1f6c263c0b5a7e4e89d5954343d9931b63c84eb8fbd402eb7e"
+    },
+    {
+      "path": "publication_package/data/attention_source_position_causal_tests.csv",
+      "bytes": 8936,
+      "sha256": "cdd151489f0f2710eb131a76675f369aae7fc0c75881d36c0e08cc7a6e83ccb8"
+    },
+    {
+      "path": "publication_package/data/same_answer_chain_transfer.csv",
+      "bytes": 543,
+      "sha256": "b6c2cf9753f253724c7520cbe34b93d44e822f2f8f506f6b97fd48b31ae6dd9b"
+    },
+    {
+      "path": "publication_package/data/cross_form_feature_transfer.csv",
+      "bytes": 34355,
+      "sha256": "a92d351dc38bb9cf3ca8bced84bdc6c3b161090c797e98a7907071d31654e518"
+    },
+    {
+      "path": "publication_package/source_scripts/circuit_tracer_graph_remote.py",
+      "bytes": 17295,
+      "sha256": "6cbaf97e04b9d7feb4d00636f254f99a38d1baea31c3ed2785979ed1dea1bb1c"
+    },
+    {
+      "path": "publication_package/source_scripts/run_anthropic_addition_reproduction_v2.py",
+      "bytes": 42855,
+      "sha256": "2d4f28358a59b07e8733b622aad5cd1ceefc6bfd62d31509f7dfc70b8bc648b2"
+    },
+    {
+      "path": "publication_package/source_scripts/run_complete_circuit_poc.py",
+      "bytes": 18801,
+      "sha256": "e3dc3cb69f3a1a4abc761e628a5a1472bd90ee005e6297f3aa65bcd933019eec"
+    },
+    {
+      "path": "publication_package/source_scripts/run_cross_form_feature_transfer_v20.py",
+      "bytes": 6775,
+      "sha256": "5829fabd926b1f53db2352e3db01e091a09c7d75f152951651377566056a6aa4"
+    },
+    {
+      "path": "publication_package/source_scripts/run_cross_form_path_transfer_v21.py",
+      "bytes": 6279,
+      "sha256": "3363abba7b2707b60ad90bef4473e1806c165ed551a6cfe81ec101f9056f487e"
+    },
+    {
+      "path": "publication_package/source_scripts/run_full_abc_attribution_graphs.py",
+      "bytes": 5889,
+      "sha256": "5ca279fafead1541a21bfe2e74adf70bf6de437b4e5b0492fec6754980eeb10c"
+    },
+    {
+      "path": "publication_package/source_scripts/run_graph_edge_poc.py",
+      "bytes": 10592,
+      "sha256": "4d6c3a4137f29b277ff4c60c1b9082def3786d6ae20757e712a8549bfccc5001"
+    },
+    {
+      "path": "publication_package/source_scripts/run_operation_specific_sparse_audit.py",
+      "bytes": 11490,
+      "sha256": "685cba7f2b2273f32112b239690a9b5059a780447277fef0fa3bd77ffef4fd76"
+    },
+    {
+      "path": "publication_package/source_scripts/run_operation_specific_sufficiency_graphs.py",
+      "bytes": 7285,
+      "sha256": "d75f3d1761d5b01c0456a34445e7e92016a14640a2a3e5d3628a6e194f8ce652"
+    },
+    {
+      "path": "publication_package/source_scripts/run_qwen3_component_continuation.py",
+      "bytes": 1932,
+      "sha256": "1fb62bc511d9bf79e9659bd9cdb5a60507ceeeff4ef826a3655efa24a147b92a"
+    },
+    {
+      "path": "publication_package/source_scripts/run_qwen3_corrected_objective.py",
+      "bytes": 7055,
+      "sha256": "cdadecc62c44e44c000c0b23b99d792a196bb26c9336986a2d3c1a7792843efb"
+    },
+    {
+      "path": "publication_package/source_scripts/run_qwen3_mechanistic_batch.py",
+      "bytes": 21002,
+      "sha256": "4346b58c5fe81eeb660fbe828582c2fe9143e71978450d63fa158ea3b254dec1"
+    },
+    {
+      "path": "publication_package/source_scripts/run_recurrent_graph_causal_v17.py",
+      "bytes": 8096,
+      "sha256": "b745ace5904417ef03686ffab4cacce6bf9200b500bedffa4dc94a58e0f770d0"
+    },
+    {
+      "path": "publication_package/source_scripts/run_same_answer_path_transfer.py",
+      "bytes": 7908,
+      "sha256": "237d872bdfcfd3940bfff7d71614eb1c1bdbb7b5d3ad3edec2d95959825e84ee"
+    }
+  ]
+}
