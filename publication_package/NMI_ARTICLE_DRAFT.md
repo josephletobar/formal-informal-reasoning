@@ -96,7 +96,7 @@ The project contains multiple exploratory runs, so aggregate early effects are n
 
 ## Data and code availability
 
-All raw tables, serialized graph objects, reports and scripts used for this draft are in the project directory. The core artifacts are linked in `publication_package/REPRODUCIBILITY_MANIFEST.md`. The intended public release should include the benchmark generator, exact environment lockfile, model identifiers and hashes, transcoder identifiers and hashes, run commands, raw CSV files and figure-generation script. Model weights and gated model credentials are not redistributed.
+The public research release is available at https://github.com/josephletobar/formal-informal-reasoning/tree/v0.1.1-abc-publication. It includes the benchmark generator, derived raw CSV tables, figures, principal driver scripts, environment record, artifact hashes and verification checks. The serialized attribution graphs are retained in the authors' local archive rather than redistributed in the lightweight release; model weights and gated credentials are not redistributed.
 
 ## References
 

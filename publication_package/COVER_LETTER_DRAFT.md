@@ -13,7 +13,7 @@ The main contribution is methodological and scientific. The Gemma 2 2B attributi
 
 We believe this distinction is relevant to the journal's interest in machine intelligence, interpretability and the mechanisms underlying generalization. The work does not claim that discrete reasoning modules have been established. Instead, it provides a reproducible benchmark, explicit causal controls and a set of results that identify which stronger claims are and are not supported by current evidence.
 
-The manuscript is not published elsewhere and is not under consideration by another journal. All authors have approved the submission. The data and analysis package contains the benchmark generator, prompt manifest, raw analysis tables, serialized attribution graphs, figure-generation code, environment record and reproducibility checks. Model weights and gated credentials are not redistributed.
+The manuscript is not published elsewhere and is not under consideration by another journal. All authors have approved the submission. The public research release contains the benchmark generator, prompt manifest, derived raw analysis tables, figure-generation code, environment record and reproducibility checks; the serialized attribution graphs are retained in the authors' local archive and can be supplied during review. Model weights and gated credentials are not redistributed.
 
 Thank you for considering this work.
 
